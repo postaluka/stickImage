@@ -22,7 +22,8 @@ export default class Camera
 
     setInstance()
     {
-        this.instance = new THREE.PerspectiveCamera(20, this.sizes.width / this.sizes.height, 0.1, 1000)
+        // this.instance = new THREE.PerspectiveCamera(20, this.sizes.width / this.sizes.height, 0.1, 1000)
+        this.instance = new THREE.PerspectiveCamera(45, 1, 0.1, 1000)
         this.instance.position.set(
             0,
             0,
@@ -34,6 +35,9 @@ export default class Camera
             0.25
         )
         this.scene.add(this.instance)
+
+        this.fovRadians = (this.instance.fov * Math.PI) / 100
+        this.viewSize = Math.abs(this.instance.position.z * Math.tan(this.fovRadians / 2) * 2)
 
     }
 

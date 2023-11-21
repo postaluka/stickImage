@@ -14,8 +14,10 @@ export default class Plane
 
         this.materials = this.experience.materials
         this.time = this.experience.time
+        this.camera = this.experience.camera
 
-        this.geometry = new THREE.PlaneGeometry(PARAMS.planeWidth, PARAMS.planeHeight, 32, 32)
+        // this.geometry = new THREE.PlaneGeometry(PARAMS.planeWidth, PARAMS.planeHeight, 32, 32)
+        this.geometry = new THREE.PlaneGeometry(this.camera.viewSize * 1.5, this.camera.viewSize, 32, 32)
 
         // Set plane
         this.instance = new THREE.Mesh(
